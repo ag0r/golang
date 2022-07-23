@@ -1,4 +1,18 @@
 services:
   go:
-    container_name: go_hello
-    build: .
+    container_name: go
+    build: ./example
+  rabbitmq:
+    image: rabbitmq:3.10.6-management
+    container_name: rabbit
+    hostname: rabbit
+    build: ./rabbit
+    #    These should be handled in the image, no need for dynamic editing
+    #    volumes:
+    #  - ./rabbitmq/etc/definitions.json:/etc/rabbitmq/definitions.json
+    #  - ./rabbitmq/etc/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    #  - ./rabbitmq/data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+    #  - ./rabbitmq/logs:/var/log/rabbitmq/log
+    ports:
+      - 5672:5672
+      - 15672:15672

@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
   config.vm.box = "hashicorp/bionic64"
-  config.vm.network "forwarded_port", guest:3000, host:3000
+  config.vm.network "forwarded_port", guest:15672, host:15672
   config.vagrant.plugins = "vagrant-docker-compose"
   config.vm.provision :docker
   config.vm.provision :docker_compose
